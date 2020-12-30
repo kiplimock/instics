@@ -1,0 +1,516 @@
+/* ---------------------------------------
+  ==============GENERAL ================
+----------------------------------------*/
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('../img/hero.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Montserrat", sans-serif;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Montserrat", sans-serif;
+}
+
+.logo {
+    height: 40px;
+    border-radius: 5px;
+}
+
+.nav-link {
+    color: #e6e6e6 !important;
+}
+
+.btn-google {
+    background:linear-gradient(-120deg, #4285f4, #34a853, #fbbc05, #ea4335);
+}
+
+/* ---------------------------------------
+  ============= Home Page ==============
+----------------------------------------*/
+
+#top-nav {
+    height: 10%;
+}
+
+#hero-text {
+    margin: auto;
+    width: 50%;
+    height: 80%;
+}
+
+/* ---------------------------------------
+  ============= SIGNUP PAGE ==============
+----------------------------------------*/
+#signup {
+    margin: auto;
+    width: 60%;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 20px 45px;
+    height: 80v;
+}
+
+#signup h6 {
+    position: relative;
+}
+
+#signup h6::before {
+    content: "";
+    display:block;
+    width: 45%;
+    height:1px;
+    background: #777;
+    position: absolute;
+    left: 5;
+    top: 50%;
+    z-index: 2;
+  }
+  
+#signup h6::after {
+    content: "";
+    display:block;
+    width: 45%;
+    height:1px;
+    background: #777;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    z-index: 2;
+}
+  
+#signup span {
+    background: #fff;
+}
+
+/* ---------------------------------------
+  ============= LOGIN PAGE ==============
+----------------------------------------*/
+#login {
+    margin: auto;
+    width: 25%;
+    border-radius: 10px;
+    background-color: #fff;
+    padding: 20px 25px;
+}
+
+#login .login-header {
+    background-color: #bbb;
+}
+
+#login h6 {
+    position: relative;
+}
+
+#login h6::before {
+    content: "";
+    display:block;
+    width: 45%;
+    height:1px;
+    background: #777;
+    position: absolute;
+    left: 5;
+    top: 50%;
+    z-index: 2;
+  }
+  
+#login h6::after {
+    content: "";
+    display:block;
+    width: 45%;
+    height:1px;
+    background: #777;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    z-index: 2;
+}
+  
+#login span {
+    background: #fff;
+}
+
+/* ---------------------------------------
+  ============= SEARCH PAGE ==============
+----------------------------------------*/
+
+#search {
+  height: 80vh;
+}
+
+#search form {
+  width: 60%;
+}
+
+
+/* ---------------------------------------
+  ============= DASHBOARD ==============
+----------------------------------------*/
+
+a,
+a:hover,
+a:focus {
+  color: inherit;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #ddd;
+  margin: 40px 0;
+}
+
+/* ====== Sidebar Style ====== */
+
+#sidebar {
+  width: 250px;
+  position: fixed;
+  top: 10vh;
+  left: -250px;
+  height: 80vh;
+  z-index: 999;
+  background: #7386D5;
+  color: #fff;
+  transition: all 0.3s;
+  overflow-y: scroll;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.2);
+}
+
+#sidebar.active {
+  left: 0;
+}
+
+#dismiss {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  background: #7386D5;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+#dismiss:hover {
+  background: #fff;
+  color: #7386D5;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 998;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+.overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+#sidebar .sidebar-item {
+  height: 50px;
+  padding: 0 15px;
+}
+
+#sidebar .sidebar-item:hover {
+  cursor: pointer;
+}
+
+#sidebar .sidebar-header {
+  padding: 20px;
+  background: #6d7fcc;
+}
+
+#sidebar ul.components {
+  padding: 20px 0;
+  border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul p {
+  color: #fff;
+  padding: 10px;
+}
+
+#sidebar ul li a {
+  padding: 10px;
+  font-size: 1.1em;
+  display: block;
+}
+
+#sidebar ul li a:hover {
+  color: #7386D5;
+  background: #fff;
+}
+
+#sidebar ul li.active>a,
+a[aria-expanded="true"] {
+  color: #fff;
+  background: #6d7fcc;
+}
+
+a[data-toggle="collapse"] {
+  position: relative;
+}
+
+.dropdown-toggle::after {
+  display: block;
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+}
+
+ul ul a {
+  font-size: 0.9em !important;
+  padding-left: 30px !important;
+  background: #6d7fcc;
+}
+
+/* ====== Content Style ====== */
+
+#content {
+  width: 100%;
+  padding: 0px 20px;
+  height: 100%;
+  transition: all 0.3s;
+  top: 10vh;
+  right: 0;
+  position: absolute;
+}
+
+ /* ====== Add Member/Librarian/Book Section ====== */
+
+#add-member,
+#add-librarian,
+#add-book,
+#view-members,
+#view-books {
+  margin: auto;
+  width: 70vw;
+}
+
+
+
+
+
+
+
+/* ---------------------------------------
+  ============= 404 NOT FOUND ==============
+----------------------------------------*/
+
+#notfound {
+  position: relative;
+  height: 100vh;
+  background-color: #fff;
+}
+
+#notfound .notfound {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.notfound {
+  max-width: 410px;
+  width: 100%;
+  text-align: center;
+}
+
+.notfound .notfound-404 {
+  height: 280px;
+  position: relative;
+  z-index: -1;
+}
+
+.notfound .notfound-404 h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 230px;
+  margin: 0px;
+  font-weight: 900;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: url('../img/404.jpg') no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: cover;
+  background-position: center;
+}
+
+
+.notfound h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #000;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+
+.notfound p {
+  font-family: 'Montserrat', sans-serif;
+  color: #000;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+
+.notfound a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: #f0ad4e;
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 0.25rem;
+  color: #fff;
+  font-weight: 700;
+  -webkit-box-shadow: 0px 4px 15px -5px #0046d5;
+          box-shadow: 0px 4px 15px -5px #0046d5;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .notfound .notfound-404 {
+      height: 142px;
+    }
+    .notfound .notfound-404 h1 {
+      font-size: 112px;
+    }
+}
+
+/* ---------------------------------------
+  ============= 403 FORBIDDEN ==============
+----------------------------------------*/
+
+#forbidden {
+  position: relative;
+  height: 100vh;
+  background-color: #fff;
+}
+
+#forbidden .forbidden {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.forbidden {
+  max-width: 410px;
+  width: 100%;
+  text-align: center;
+}
+
+.forbidden .forbidden-404 {
+  height: 280px;
+  position: relative;
+  z-index: -1;
+}
+
+.forbidden .forbidden-404 h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 230px;
+  margin: 0px;
+  font-weight: 900;
+  position: absolute;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  background: url('../img/404.jpg') no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: cover;
+  background-position: center;
+}
+
+
+.forbidden h2 {
+  font-family: 'Montserrat', sans-serif;
+  color: #000;
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+
+.forbidden p {
+  font-family: 'Montserrat', sans-serif;
+  color: #000;
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+
+.forbidden a {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: uppercase;
+  background: #f0ad4e;
+  display: inline-block;
+  padding: 15px 30px;
+  border-radius: 0.25rem;
+  color: #fff;
+  font-weight: 700;
+  -webkit-box-shadow: 0px 4px 15px -5px #0046d5;
+          box-shadow: 0px 4px 15px -5px #0046d5;
+}
+
+
+@media only screen and (max-width: 767px) {
+    .forbidden .forbidden-404 {
+      height: 142px;
+    }
+    .forbidden .forbidden-404 h1 {
+      font-size: 112px;
+    }
+}
+
+
+/* ---------------------------------------
+  ============= FOOTER ==============
+----------------------------------------*/
+#footer {
+  width: 100%;
+  height: 10%;
+  position: fixed;
+  bottom: 0;
+  opacity: 0.5;
+}

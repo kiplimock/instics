@@ -1,0 +1,270 @@
+{% extends 'base.html' %}
+{% block main %}
+<div id="wrapper">
+    <!-- Sidebar  -->
+<nav id="sidebar">
+    <div id="dismiss">
+        <i class="fas fa-arrow-left"></i>
+    </div>
+
+    <div class="sidebar-header">
+        <h3>Dashboard</h3>
+    </div>
+
+    <ul class="list-unstyled components">
+        {% if current_user.role == 'admin' %}
+        <li class="active">
+            <div class="sidebar-item" data-toggle="collapse" data-target="#add-librarian">Add Librarian</div>
+        </li>
+        {% endif %}
+        <li>
+            <div class="sidebar-item" data-toggle="collapse" data-target="#add-member">Add member</div>
+        </li>
+        <li>
+            <div class="sidebar-item" data-toggle="collapse" data-target="#add-book">Add book</div>
+        </li>
+        <li>
+            <div class="sidebar-item" data-toggle="collapse" data-target="#view-members">View members</div>
+        </li>
+        <li>
+            <div class="sidebar-item" data-toggle="collapse" data-target="#view-books">View books</div>
+        </li>
+        <li>
+            <div class="sidebar-item" data-toggle="collapse" data-target="">View borrowed books</div>
+        </li>
+    </ul>
+</nav>
+
+<!-- Page Content  -->
+<div id="content">
+    <button style="position: fixed;" type="button" id="sidebarCollapse" class="btn btn-info">
+        <i class="fas fa-align-left"></i>
+    </button>
+
+    
+    {% if current_user.role == 'admin' %}
+    <div id="add-librarian" class="collapse">
+        <div class="card shadow-lg">
+            <div class="card-header">
+                <h4>Add a librarian</h4>
+            </div>
+            <div class="card-body">
+                <form action="" method="POST">
+                    {{ form1.hidden_tag() }}
+                    <div class="form-group">
+                        {{ form1.name.label }}
+                        {{ form1.name( class="form-control" ) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form1.email.label }}
+                        {{ form1.email( class="form-control" ) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form1.gender.label }}
+                        {{ form1.gender( class="form-control" ) }}
+                    </div>
+                    {{ form1.submit1( class="btn btn-primary btn-block" ) }}
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <div id="add-member" class="collapse show">
+        <div class="card shadow-lg">
+            <div class="card-header">
+                <h4>Add a member</h4>
+            </div>
+            <div class="card-body">
+                <form action="" method="POST">
+                    {{ form2.hidden_tag() }}
+                    <div class="form-group">
+                        {{ form2.name.label }}
+                        {{ form2.name( class="form-control" ) }}
+                        {% for error in form2.name.errors %}
+                            <small style="color: red;">{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        {{ form2.email.label }}
+                        {{ form2.email( class="form-control" ) }}
+                        {% for error in form2.email.errors %}
+                            <small style="color: red;">{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                    <div class="form-group">
+                        {{ form2.gender.label }}
+                        {{ form2.gender( class="form-control" ) }}
+                        {% for error in form2.gender.errors %}
+                            <small style="color: red;">{{ error }}</small>
+                        {% endfor %}
+                    </div>
+                    {{ form2.submit2( class="btn btn-primary btn-block" ) }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="add-book" class="collapse">
+        <div class="card shadow-lg">
+            <div class="card-header">
+                <h4>Add a book</h4>
+            </div>
+            <div class="card-body">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {{ form3.hidden_tag() }}
+                    <div class="accordion" id="accordionBook">
+                        <div class="card-header mb-2">
+                            <h1 class="btn btn-block text-left pl-0" data-toggle="collapse" data-target="#basicInfo" aria-expanded="true" aria-controls="basicInfo">
+                                Basic book info
+                            </h1>
+                        </div>
+                        <div id="basicInfo" class="collapse show mb-2" data-parent="#accordionBook">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form3.title.label }}
+                                        {{ form3.title( class="form-control" ) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form3.author.label }}
+                                        {{ form3.author( class="form-control" ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form3.subject.label }}
+                                        {{ form3.subject( class="form-control" ) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form3.pub_date.label }}
+                                        {{ form3.pub_date( class="form-control" ) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-header mb-2">
+                            <h2 class="btn btn-block text-left pl-0" data-toggle="collapse" data-target="#advancedInfo" aria-expanded="true" aria-controls="advancedInfo">
+                                Adanced library info
+                            </h2>
+                        </div>
+                        <div id="advancedInfo" class="collapse mb-2" data-parent="#accordionBook">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form3.isbn.label }}
+                                        {{ form3.isbn( class="form-control" ) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form3.loan_period.label }}
+                                        {{ form3.loan_period( class="form-control" ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form3.barcode.label }}
+                                        {{ form3.barcode( class="form-control" ) }}
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        {{ form3.pages.label }}
+                                        {{ form3.pages( class="form-control" ) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        {{ form3.image.label }}
+                                        {{ form3.image( class="form-control" ) }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{ form3.submit3( class="btn btn-primary btn-block" ) }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div id="view-members" class="collapse">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">All enrolled members</h3>
+            </div>
+            <div class="card-body">
+                {% for member in members %}
+                    <div class="row">
+                        <div class="col-md-1">
+                            <h5><i class="fas fa-user"></i></h5>
+                            <p><i class="fas fa-envelope font-weight-bold"></i></p>
+                            <p><i class="fas fa-venus-mars"></i></p>
+                        </div>
+                        <div class="col-md-11">
+                            <h5>{{ member.name }}</h5>                        
+                            <p>{{ member.email }}</p>
+                            <p>{{ member.gender.capitalize() }}</p>
+                        </div>
+                        <hr>
+                    </div>
+                    <hr>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div id="view-books" class="collapse">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">All books</h3>
+            </div>
+            <div class="card-body">
+                {% for book in books %}
+                    <div class="row">
+                        <div class="col-md-2">
+                            <h4>Title:</h4>
+                            <p>Author:</p>
+                            <p>Published:</p>
+                            <p>ISBN:</p>
+                            <p>Availability:</p>
+                            <p>Loan period:</p>
+                        </div>
+                        <div class="col-md-10">
+                            <h4>{{ book.title }}</h4>                        
+                            <p class="mb-3">{{ book.author.capitalize() }}</p>
+                            <p>{{ book.pub_date }}</p>
+                            <p>{{ book.ISBN }}</p>
+                            <p>
+                                {% if book.status == 'available' %}
+                                    <span style="color: green;">{{ book.status.capitalize() }}</span>
+                                {% else %}
+                                    <span style="color: red;">{{ book.status.capitalize() }}</span>
+                                {% endif %}
+                            </p>
+                            <p>{{ book.loan_period }}</p>
+                        </div>
+                        <hr>
+                    </div>
+                    <hr>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="overlay"></div>
+{% endblock main %}
+    

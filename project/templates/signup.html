@@ -1,0 +1,64 @@
+{% extends 'base2.html' %}
+{% block content %}
+    <section class="d-flex align-items-center py-3">
+        <div id="signup" class="shadow-lg">
+            <h3 class="text-center mb-4">Sign Up</h3>
+            <form action="" method="POST">
+                {{ form.hidden_tag() }}
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form.name.label }}
+                            {{ form.name( class="form-control" ) }}
+                            {% for error in form.name.errors %}
+                                <small style="color: red;">{{ error }}</small>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form.gender.label }}
+                            {{ form.gender( class="form-control" ) }}
+                            {% for error in form.gender.errors %}
+                                <small style="color: red;">{{ error }}</small>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form.email.label }}
+                            {{ form.email( class="form-control" ) }}
+                            {% for error in form.email.errors %}
+                                <small style="color: red;">{{ error }}</small>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            {{ form.password.label }}
+                            {{ form.password( class="form-control" ) }}
+                            {% for error in form.password.errors %}
+                                <small style="color: red;">{{ error }}</small>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {{ form.submit( class="btn btn-block btn btn-success")}}
+
+                <h6 class="text-center mt-3"><span>or</span></h6>
+                <a href="{{ url_for('users.signup') }}" class="btn btn-block btn-google text-light mt-3">
+                    <i class="fab fa-google mr-2"></i>
+                    Sign in with Google
+                </a>
+                <div class="text-center mt-3">
+                    <small class="mt-2">
+                        Already signed up? <a href="{{ url_for('users.login') }}">Login</a>
+                    </small>
+                </div>
+            </form>
+        </div>
+    </section>
+{% endblock content %}
+    

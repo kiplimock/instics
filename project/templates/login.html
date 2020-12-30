@@ -1,0 +1,52 @@
+{% extends 'base2.html' %}
+{% block content %}
+<section class="d-flex align-items-center py-3">
+    <div id="login" class="shadow-lg">
+        <h3 class="text-center">Log in</h3>
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.email.label }}
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-envelope text-primary"></i>
+                        </div>
+                    </div>
+                    {{ form.email( class="form-control" ) }}
+                </div>
+                {% for error, field in form.errors.items() %}
+                    <small style="color: red;">{{ error }}</small>
+                {% endfor %}
+            </div>
+            <div class="form-group mb-3">
+                {{ form.password.label }}
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-lock text-primary"></i>
+                        </div>
+                    </div>
+                    {{ form.password( class="form-control" ) }}
+                </div>
+                {% for error, field in form.errors.items() %}
+                    <small style="color: red;">{{ error }}</small>
+                {% endfor %}
+            </div>
+            {{ form.submit( class="btn btn-block btn btn-success")}}
+
+            <h6 class="text-center mt-3"><span>or</span></h6>
+            <a href="{{ url_for('users.login') }}" class="btn btn-block btn-google text-light mt-3">
+                <i class="fab fa-google mr-2"></i>
+                Sign in with Google
+            </a>
+            <div class="text-center mt-3">
+                <small>
+                    Don't have an account? <a href="{{ url_for('users.signup') }}">Sign up</a>
+                </small>
+            </div>
+        </form>
+    </div>
+</section>
+{% endblock content %}
+    

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block main %}
+    <section id="search" class="d-flex justify-content-center align-items-center py-3">
+        <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            {{ form.first.label }}
+            <div class="form-row">
+                <div class="col-md mb-3">
+                    {{ form.first( class="form-control" )}}
+                </div>
+                
+                <div class="col-md mb-3">
+                    {{ form.second( class="form-control" )}}
+                </div>
+                
+                <div class="col-md mb-3">
+                    {{ form.third( class="form-control" )}}
+                </div>
+            </div>
+            {{ form.keyword( class="form-control mb-3" )}}
+            {{ form.submit( class='btn btn-success' )}}
+        </form>
+    </section>
+{% endblock main %}
+    
